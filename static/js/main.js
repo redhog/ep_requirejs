@@ -37,19 +37,7 @@
 
         // Call documentReady hook
         $(function() {
-
-          var pageNameParts = window.location.pathname.slice(1).replace(/_/g, "/").split("/").map(function (x) {return x.slice(0, 1).toUpperCase() + x.slice(1); });
-
-          var prefixes = [];
-          for (var i = pageNameParts.length; i >= 0; i--) {
-            prefixes.push(pageNameParts.slice(0, i).join(""));
-          }
-
-          var pageState = {};
-          async.eachSeries(prefixes, function (prefix, cb) {
-            console.log("Running " + 'documentReady' + prefix);
-            hooks.aCallAll('documentReady' + prefix, pageState, cb);
-          });
+          plugins.callPageLoaded();
         });
       });
     }
