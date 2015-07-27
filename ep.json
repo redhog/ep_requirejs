@@ -1,0 +1,13 @@
+{
+  "parts": [
+    { "name": "requireJSModuleLoader", "pre": ["ep_carabiner/nodeModuleLoader"],
+      "hooks": {
+        "loadModule": "ep_requirejs/node/hooks/requirejs:loadRequireJSModule",
+        "eejsBlock_scripts": "ep_requirejs/node/hooks/requirejs:clientScripts"
+      },
+      "client_hooks": {
+        "loadModule": ":loadRequireJSModule"
+      }      
+    }
+  ]
+}
