@@ -1,7 +1,17 @@
+// FIXME: Load plugins here
+
 function defineRequireJSLoader(requirejs) {
   if (requirejs == undefined) requirejs = require;
+
   requirejs.config({
     baseUrl: module.paths[3]
+    packages: Object.keys(plugins.plugin_packages).map(function (name) {
+      return {
+        name: name,
+        location: plugins.plugin_packages[name].realPath
+      }
+    }),
+    nodeRequire: require
   });
 
   var exports = {};
